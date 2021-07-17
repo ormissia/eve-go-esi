@@ -1,0 +1,1528 @@
+openapi: 3.0.1
+info:
+  title: ESI Meta Spec
+  description: ESI specs and miscellaneous routes
+  version: "0.1"
+servers:
+- url: https://esi.evetech.net/
+paths:
+  /_dev/swagger.json:
+    get:
+      tags:
+      - Swagger
+      summary: Get _dev spec (versioned)
+      description: "The _dev ESI swagger specification. The underscore swagger specs\
+        \ do not have a basePath, giving you an easy way to generate stable clients\
+        \ on versioned routes."
+      operationId: get__dev_swagger
+      parameters:
+      - name: user_agent
+        in: query
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-User-Agent
+        in: header
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: datasource
+        in: query
+        description: The server name you would like data from
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - tranquility
+          default: tranquility
+      responses:
+        "200":
+          description: ESI _dev swagger specification
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                title: get__dev_swagger_ok
+                type: object
+                description: ESI _dev swagger 2.0 spec
+                x-content-type: application/json
+      x-cached-seconds: 60
+  /_latest/swagger.json:
+    get:
+      tags:
+      - Swagger
+      summary: Get _latest spec (versioned)
+      description: "The _latest ESI swagger specification. The underscore swagger\
+        \ specs do not have a basePath, giving you an easy way to generate stable\
+        \ clients on versioned routes."
+      operationId: get__latest_swagger
+      parameters:
+      - name: user_agent
+        in: query
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-User-Agent
+        in: header
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: datasource
+        in: query
+        description: The server name you would like data from
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - tranquility
+          default: tranquility
+      responses:
+        "200":
+          description: ESI _latest swagger specification
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                title: get__latest_swagger_ok
+                type: object
+                description: ESI _latest swagger 2.0 spec
+                x-content-type: application/json
+      x-cached-seconds: 60
+  /_legacy/swagger.json:
+    get:
+      tags:
+      - Swagger
+      summary: Get _legacy spec (versioned)
+      description: "The _legacy ESI swagger specification. The underscore swagger\
+        \ specs do not have a basePath, giving you an easy way to generate stable\
+        \ clients on versioned routes."
+      operationId: get__legacy_swagger
+      parameters:
+      - name: user_agent
+        in: query
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-User-Agent
+        in: header
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: datasource
+        in: query
+        description: The server name you would like data from
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - tranquility
+          default: tranquility
+      responses:
+        "200":
+          description: ESI _legacy swagger specification
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                title: get__legacy_swagger_ok
+                type: object
+                description: ESI _legacy swagger 2.0 spec
+                x-content-type: application/json
+      x-cached-seconds: 60
+  /dev/swagger.json:
+    get:
+      tags:
+      - Swagger
+      summary: Get dev swagger spec
+      description: The dev ESI swagger specification.
+      operationId: get_dev_swagger
+      parameters:
+      - name: user_agent
+        in: query
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-User-Agent
+        in: header
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: datasource
+        in: query
+        description: The server name you would like data from
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - tranquility
+          default: tranquility
+      responses:
+        "200":
+          description: ESI dev swagger specification
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                title: get_dev_swagger_ok
+                type: object
+                description: ESI dev swagger 2.0 spec
+                x-content-type: application/json
+      x-cached-seconds: 60
+  /diff/{version_a}/{version_b}/:
+    get:
+      tags:
+      - WebUI
+      summary: Diff route
+      description: Diff two ESI specs
+      operationId: get_diff_version_a_version_b
+      parameters:
+      - name: user_agent
+        in: query
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-User-Agent
+        in: header
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: datasource
+        in: query
+        description: The server name you would like data from
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - tranquility
+          default: tranquility
+      - name: version_a
+        in: path
+        description: Swagger spec version to compare with
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          enum:
+          - _dev
+          - _latest
+          - _legacy
+          - dev
+          - latest
+          - legacy
+          - v1
+          - v2
+          - v3
+          - v4
+          - v5
+          - v6
+      - name: version_b
+        in: path
+        description: Swagger spec version to compare against
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          enum:
+          - _dev
+          - _latest
+          - _legacy
+          - dev
+          - latest
+          - legacy
+          - v1
+          - v2
+          - v3
+          - v4
+          - v5
+          - v6
+      responses:
+        "200":
+          description: Diff results
+          content:
+            text/html; charset=utf-8:
+              schema:
+                title: get_diff_version_a_version_b_ok
+                type: string
+                description: Diff HTML response
+                x-content-type: text/html; charset=utf-8
+  /headers/:
+    get:
+      tags:
+      - Meta
+      summary: Debug request headers
+      description: Echo the request headers for debugging purposes. Note that the
+        'Connection' header and any 'X-' headers are not included
+      operationId: get_headers
+      responses:
+        "200":
+          description: Headers OK
+          content:
+            application/json:
+              schema:
+                title: get_headers_ok
+                type: object
+                additionalProperties:
+                  type: string
+                description: Headers response
+                x-content-type: application/json
+  /latest/swagger.json:
+    get:
+      tags:
+      - Swagger
+      summary: Get latest swagger spec
+      description: The latest ESI swagger specification.
+      operationId: get_latest_swagger
+      parameters:
+      - name: user_agent
+        in: query
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-User-Agent
+        in: header
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: datasource
+        in: query
+        description: The server name you would like data from
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - tranquility
+          default: tranquility
+      responses:
+        "200":
+          description: ESI latest swagger specification
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                title: get_latest_swagger_ok
+                type: object
+                description: ESI latest swagger 2.0 spec
+                x-content-type: application/json
+      x-cached-seconds: 60
+  /legacy/swagger.json:
+    get:
+      tags:
+      - Swagger
+      summary: Get legacy swagger spec
+      description: The legacy ESI swagger specification.
+      operationId: get_legacy_swagger
+      parameters:
+      - name: user_agent
+        in: query
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-User-Agent
+        in: header
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: datasource
+        in: query
+        description: The server name you would like data from
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - tranquility
+          default: tranquility
+      responses:
+        "200":
+          description: ESI legacy swagger specification
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                title: get_legacy_swagger_ok
+                type: object
+                description: ESI legacy swagger 2.0 spec
+                x-content-type: application/json
+      x-cached-seconds: 60
+  /ping:
+    get:
+      tags:
+      - Meta
+      summary: Ping route
+      description: Ping the ESI routers
+      operationId: get_ping
+      responses:
+        "200":
+          description: Ping OK
+          content:
+            text/plain; charset=utf-8:
+              schema:
+                title: get_ping_ok
+                type: string
+                description: OK response
+                enum:
+                - ok
+                x-content-type: text/plain; charset=utf-8
+  /status.json:
+    get:
+      tags:
+      - Meta
+      summary: ESI health status
+      description: Provides a general health indicator per route and method
+      operationId: get_status
+      parameters:
+      - name: version
+        in: query
+        description: The version of metrics to request. Note that alternate versions
+          are grouped together
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - latest
+          - dev
+          - legacy
+          - meta
+          default: latest
+      responses:
+        "200":
+          description: ESI Status
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                title: get_status_ok
+                type: array
+                description: ESI Status JSON
+                items:
+                  $ref: '#/components/schemas/get_status_item'
+                x-content-type: application/json
+        "404":
+          description: Unsupported version
+          content:
+            application/json:
+              schema:
+                title: get_status_not_found
+                type: object
+                description: Unsupported version
+                x-content-type: application/json
+      x-cached-seconds: 60
+  /swagger.json:
+    get:
+      tags:
+      - Swagger
+      summary: Get meta swagger spec
+      description: The meta ESI swagger specification.
+      operationId: get_meta_swagger
+      parameters:
+      - name: user_agent
+        in: query
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-User-Agent
+        in: header
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: datasource
+        in: query
+        description: The server name you would like data from
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - tranquility
+          default: tranquility
+      responses:
+        "200":
+          description: ESI meta swagger specification
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                title: get_meta_swagger_ok
+                type: object
+                description: ESI meta swagger 2.0 spec
+                x-content-type: application/json
+      x-cached-seconds: 60
+  /ui/:
+    get:
+      tags:
+      - WebUI
+      summary: SwaggerUI route (v3)
+      description: "ESI web UI. This is an open source project. If you find ESI web\
+        \ UI specific bugs, please report them to https://github.com/esi/esi-swagger-ui/issues"
+      operationId: get_ui
+      parameters:
+      - name: user_agent
+        in: query
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-User-Agent
+        in: header
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: datasource
+        in: query
+        description: The server name you would like data from
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - tranquility
+          default: tranquility
+      - name: version
+        in: query
+        description: The Swagger spec version to display
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - _dev
+          - _latest
+          - _legacy
+          - dev
+          - latest
+          - legacy
+          - v1
+          - v2
+          - v3
+          - v4
+          - v5
+          - v6
+          default: latest
+      responses:
+        "200":
+          description: v3 SwaggerUI
+          content:
+            text/html; charset=utf-8:
+              schema:
+                title: get_ui_ok
+                type: string
+                description: ESI web UI
+                x-content-type: text/html; charset=utf-8
+  /v1/swagger.json:
+    get:
+      tags:
+      - Swagger
+      summary: Get v1 swagger spec
+      description: The v1 ESI swagger specification.
+      operationId: get_v1_swagger
+      parameters:
+      - name: user_agent
+        in: query
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-User-Agent
+        in: header
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: datasource
+        in: query
+        description: The server name you would like data from
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - tranquility
+          default: tranquility
+      responses:
+        "200":
+          description: ESI v1 swagger specification
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                title: get_v1_swagger_ok
+                type: object
+                description: ESI v1 swagger 2.0 spec
+                x-content-type: application/json
+      x-cached-seconds: 60
+  /v2/swagger.json:
+    get:
+      tags:
+      - Swagger
+      summary: Get v2 swagger spec
+      description: The v2 ESI swagger specification.
+      operationId: get_v2_swagger
+      parameters:
+      - name: user_agent
+        in: query
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-User-Agent
+        in: header
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: datasource
+        in: query
+        description: The server name you would like data from
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - tranquility
+          default: tranquility
+      responses:
+        "200":
+          description: ESI v2 swagger specification
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                title: get_v2_swagger_ok
+                type: object
+                description: ESI v2 swagger 2.0 spec
+                x-content-type: application/json
+      x-cached-seconds: 60
+  /v3/swagger.json:
+    get:
+      tags:
+      - Swagger
+      summary: Get v3 swagger spec
+      description: The v3 ESI swagger specification.
+      operationId: get_v3_swagger
+      parameters:
+      - name: user_agent
+        in: query
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-User-Agent
+        in: header
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: datasource
+        in: query
+        description: The server name you would like data from
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - tranquility
+          default: tranquility
+      responses:
+        "200":
+          description: ESI v3 swagger specification
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                title: get_v3_swagger_ok
+                type: object
+                description: ESI v3 swagger 2.0 spec
+                x-content-type: application/json
+      x-cached-seconds: 60
+  /v4/swagger.json:
+    get:
+      tags:
+      - Swagger
+      summary: Get v4 swagger spec
+      description: The v4 ESI swagger specification.
+      operationId: get_v4_swagger
+      parameters:
+      - name: user_agent
+        in: query
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-User-Agent
+        in: header
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: datasource
+        in: query
+        description: The server name you would like data from
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - tranquility
+          default: tranquility
+      responses:
+        "200":
+          description: ESI v4 swagger specification
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                title: get_v4_swagger_ok
+                type: object
+                description: ESI v4 swagger 2.0 spec
+                x-content-type: application/json
+      x-cached-seconds: 60
+  /v5/swagger.json:
+    get:
+      tags:
+      - Swagger
+      summary: Get v5 swagger spec
+      description: The v5 ESI swagger specification.
+      operationId: get_v5_swagger
+      parameters:
+      - name: user_agent
+        in: query
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-User-Agent
+        in: header
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: datasource
+        in: query
+        description: The server name you would like data from
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - tranquility
+          default: tranquility
+      responses:
+        "200":
+          description: ESI v5 swagger specification
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                title: get_v5_swagger_ok
+                type: object
+                description: ESI v5 swagger 2.0 spec
+                x-content-type: application/json
+      x-cached-seconds: 60
+  /v6/swagger.json:
+    get:
+      tags:
+      - Swagger
+      summary: Get v6 swagger spec
+      description: The v6 ESI swagger specification.
+      operationId: get_v6_swagger
+      parameters:
+      - name: user_agent
+        in: query
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-User-Agent
+        in: header
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: datasource
+        in: query
+        description: The server name you would like data from
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - tranquility
+          default: tranquility
+      responses:
+        "200":
+          description: ESI v6 swagger specification
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                title: get_v6_swagger_ok
+                type: object
+                description: ESI v6 swagger 2.0 spec
+                x-content-type: application/json
+      x-cached-seconds: 60
+  /verify/:
+    get:
+      tags:
+      - Meta
+      summary: Verify access token
+      description: Verify authorization tokens in ESI's auth cache
+      operationId: get_verify
+      parameters:
+      - name: user_agent
+        in: query
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-User-Agent
+        in: header
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: datasource
+        in: query
+        description: The server name you would like data from
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - tranquility
+          default: tranquility
+      - name: token
+        in: query
+        description: Access token to use if unable to set a header
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: "Access token, in the format of \"Bearer <access token>\""
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: SSO /verify JSON response
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_verify_ok'
+        "400":
+          description: SSO /verify JSON error
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                title: get_verify_error
+                type: object
+                description: SSO /verify JSON
+                x-content-type: application/json
+        "401":
+          description: Authorization not provided
+          content:
+            application/json:
+              schema:
+                title: get_verify_unauthorized
+                type: object
+                description: Authorization not provided
+                x-content-type: application/json
+        "404":
+          description: Unsupported datasource
+          content:
+            application/json:
+              schema:
+                title: get_verify_not_found
+                type: object
+                description: Unsupported datasource
+                x-content-type: application/json
+      x-cached-seconds: 30
+  /versions/:
+    get:
+      tags:
+      - Meta
+      summary: List versions
+      description: List all endpoint versions
+      operationId: get_versions
+      parameters:
+      - name: user_agent
+        in: query
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: X-User-Agent
+        in: header
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Version list
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                title: get_versions_ok
+                type: array
+                description: List of versions
+                items:
+                  title: get_versions_version
+                  type: string
+                  description: Available version
+                x-content-type: application/json
+      x-cached-seconds: 60
+components:
+  schemas:
+    get_verify_ok:
+      title: get_verify_ok
+      required:
+      - CharacterID
+      type: object
+      properties:
+        CharacterID:
+          title: get_verify_character_id
+          type: integer
+          description: Token owner's character ID
+          format: int32
+        CharacterName:
+          title: get_verify_character_name
+          type: string
+          description: Token owner's character name
+        CharacterOwnerHash:
+          title: get_verify_character_owner_hash
+          type: string
+          description: "Hash of the character's owner. If the character is sold or\
+            \ otherwise transferred, this will change"
+        ExpiresOn:
+          title: get_verify_expires_on
+          type: string
+          description: Expiry time of the token (not RFC3339)
+        IntellectualProperty:
+          title: get_verify_intellectual_property
+          type: string
+          description: The IP which generated the token
+        Scopes:
+          title: get_verify_scopes
+          type: string
+          description: Space separated list of scopes the token is valid for
+        TokenType:
+          title: get_verify_token_type
+          type: string
+          description: Type of access token
+      description: SSO /verify JSON
+      example:
+        TokenType: TokenType
+        IntellectualProperty: IntellectualProperty
+        Scopes: Scopes
+        CharacterID: 0
+        CharacterName: CharacterName
+        ExpiresOn: ExpiresOn
+        CharacterOwnerHash: CharacterOwnerHash
+    get_status_item:
+      title: get_status_item
+      required:
+      - endpoint
+      - method
+      - route
+      - status
+      - tags
+      type: object
+      properties:
+        endpoint:
+          title: get_status_endpoint
+          type: string
+          description: ESI Endpoint cluster advertising this route
+        method:
+          title: get_status_method
+          type: string
+          description: Swagger defined method
+        route:
+          title: get_status_route
+          type: string
+          description: "Swagger defined route, not including version prefix"
+        status:
+          title: get_status_status
+          type: string
+          description: "Vague route status. Green is good, yellow is degraded, meaning\
+            \ slow or potentially dropping requests. Red means most requests are not\
+            \ succeeding and/or are very slow (5s+) on average."
+          enum:
+          - green
+          - yellow
+          - red
+        tags:
+          title: get_status_tags
+          type: array
+          description: Swagger tags applicable to this route
+          items:
+            title: get_status_tag
+            type: string
+            description: Swagger tag
+      description: Per route status
+      example:
+        endpoint: endpoint
+        route: route
+        method: method
+        status: green
+        tags:
+        - tags
+        - tags
+  parameters:
+    Authorization:
+      name: Authorization
+      in: header
+      description: "Access token, in the format of \"Bearer <access token>\""
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+    X-User-Agent:
+      name: X-User-Agent
+      in: header
+      description: "Client identifier, takes precedence over User-Agent"
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+    datasource:
+      name: datasource
+      in: query
+      description: The server name you would like data from
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+        enum:
+        - tranquility
+        default: tranquility
+    token:
+      name: token
+      in: query
+      description: Access token to use if unable to set a header
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+    user_agent:
+      name: user_agent
+      in: query
+      description: "Client identifier, takes precedence over headers"
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+    version:
+      name: version
+      in: query
+      description: The version of metrics to request. Note that alternate versions
+        are grouped together
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+        enum:
+        - latest
+        - dev
+        - legacy
+        - meta
+        default: latest
+    version-ui:
+      name: version
+      in: query
+      description: The Swagger spec version to display
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+        enum:
+        - _dev
+        - _latest
+        - _legacy
+        - dev
+        - latest
+        - legacy
+        - v1
+        - v2
+        - v3
+        - v4
+        - v5
+        - v6
+        default: latest
+    version_a:
+      name: version_a
+      in: path
+      description: Swagger spec version to compare with
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        enum:
+        - _dev
+        - _latest
+        - _legacy
+        - dev
+        - latest
+        - legacy
+        - v1
+        - v2
+        - v3
+        - v4
+        - v5
+        - v6
+    version_b:
+      name: version_b
+      in: path
+      description: Swagger spec version to compare against
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        enum:
+        - _dev
+        - _latest
+        - _legacy
+        - dev
+        - latest
+        - legacy
+        - v1
+        - v2
+        - v3
+        - v4
+        - v5
+        - v6
+x-original-swagger-version: "2.0"
